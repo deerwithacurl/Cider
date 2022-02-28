@@ -460,6 +460,7 @@ export class BrowserWindow {
             try {
                 const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
                 if (!this.chromecastIP.includes(ip)) {
+                    this.audioStream = new Stream.PassThrough()
                     this.headerSent = false;
                     this.chromecastIP.push(ip)
                 }
